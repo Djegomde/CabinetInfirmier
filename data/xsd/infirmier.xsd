@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        targetNamespace="http://www.univ-grenoble-alpes.fr/l3miage/medical"
+        xmlns:ci="http://www.univ-grenoble-alpes.fr/l3miage/medical"
+        elementFormDefault="qualified"
+>
+    
+    <element name="infirmier" type="ci:Infirmier"/>
+    
+    
+    <complexType name="Infirmier">
+        <sequence>
+          <element name="nom" type="string"/>
+          <element name="prenom" type="string"/>
+          <element name="photo" type="string"/>  
+        </sequence>
+        <attribute name="id" type="ci:Id"/>
+    </complexType>
+    
+    
+    <!--Definition du ID de L'infirmier avec une restriction à 3 caractère obligatoire-->
+    
+    <simpleType name="Id">
+        <restriction base="string">
+            <pattern value="[0-9]{3}"/>
+        </restriction>
+    </simpleType>
+    
+</schema>

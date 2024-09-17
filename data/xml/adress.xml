@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<adresse 
+        xmlns:xs="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://www.univ-grenoble-alpes.fr/l3miage/medical"
+        xs:schemaLocation="http://www.univ-grenoble-alpes.fr/l3miage/medical ../xsd/adresse.xsd"
+>
+    <numero>107</numero>
+    <rue>rue des Taillées</rue>
+    <codePostal>38400</codePostal>
+    <ville>Grenoble</ville>
+</adresse>

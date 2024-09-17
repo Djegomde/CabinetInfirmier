@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema  xmlns="http://www.w3.org/2001/XMLSchema"
+         targetNamespace="http://www.univ-grenoble-alpes.fr/l3miage/medical"
+         xmlns:ci="http://www.univ-grenoble-alpes.fr/l3miage/medical"
+         elementFormDefault="qualified">
+    
+    <!-- TYPE CABINET QUI SERA NOTRE ELEMENT RACINE-->
+    <element name="cabinet" type="ci:Cabinet"/>
+    
+    <!-- Declaration de notre type Racine Cabinet en complexType-->
+    <complexType name="Cabinet">
+        <sequence>
+            <element name="nom" type="string"/>
+            <element name="adresse" type="ci:Adresse"/>
+            <element name="listeInfirmier" type="ci:ListeInfirmier"/>
+            <element name="listePatient" type="ci:ListePatient"/>
+        </sequence>
+    </complexType>
+    
+    
+    <!--  Declaration du TYPE ADRESSE-->
+    <!--.................................DEBUT ADRESSE....................................................-->
+        <complexType name="Adresse">
+            <sequence>
+                <!-- NUMERO D'ETAGE  A FAIRE PLUTARD -->
+
+                <element name="numero" type="int" minOccurs="1" maxOccurs="unbounded" />
+                <element name="rue" type="string"/>
+
+                <!-- Definition d'un type  de code postal annonyme qui permet de prendre 5 carractere de chiffre   -->
+                <element name="codePostal" type="ci:CodePostal" />
+
+                <!--  Type Enumeration par la suite   -->
+                <element name="ville" type="string"  />
+
+            </sequence>
+        </complexType>
+        <!--Type CodePostale -->
+        <simpleType name="CodePostal">
+            <restriction  base="string">
+                <pattern value="[0-9]{5}"/>
+            </restriction>
+
+        </simpleType>
+    <!-- ..........................................FIN ADRESSE.............................................-->
+    
+    <!-- ..........................................DEBUT LISTE DES INFIRMIERS.............................................-->
+    <complexType name="ListeInfirmier">
+        <sequence >
+            <element name="infirmiers" type="ci:Infirmier"/>
+        </sequence>
+    </complexType>
+
+    <!-- ..........................................FIN LISTE DES INFIRMIERS.............................................-->
+
+    
+
+    <!-- ..........................................DEBUT TYPE INFIRMIER.............................................-->
+    <complexType name="Infirmier">
+        <sequence>
+            <element name="nom" type="string"/>
+            <element name="prenom" type="string"/>
+            <element name="photo" type="string"/>
+        </sequence>
+        <attribute name="id" type="ci:Id"/>
+    </complexType>
+
+
+    <!--Definition du ID de L'infirmier avec une restriction à 3 caractère obligatoire-->
+
+    <simpleType name="Id">
+        <restriction base="string">
+            <pattern value="[0-9]{3}"/>
+        </restriction>
+    </simpleType>
+
+    <!-- ..........................................FIN TYPE INFIRMIER.............................................-->
+
+    <!-- ..........................................DEBUT LISTE DES PATIENTS.............................................-->
+    <complexType name="ListePatient">
+        <sequence>
+            <element name="patients" type="ci:Patient"/>
+        </sequence>
+    </complexType>
+    <!-- ..........................................FIN LISTE DES PATIENTS.............................................-->
+    
+    
+    <!-- ..........................................DEBUT DU TYPE PATIENT.............................................-->
+    <complexType name="Patient">
+        <sequence>
+            <element name="infosPatient" type="string"/>
+            <element name="nom" type="string"/>
+            <element name="prenom" type="string"/>
+            <element name="sexe" type="ci:Sexe"/>
+            <element name="naissance" type="date"/>
+            <!-- LE NUMERO DE SECU a modelisé plutard-->
+            <element name="numéro" type="string"/>
+            <element name="adresse" type="ci:Adresse"/>
+            <element name="visite" type="ci:Visite"/>
+
+        </sequence>
+
+    </complexType>
+
+    <!-- TYPE SEXE -->
+    <simpleType name="Sexe">
+        <restriction base="string">
+            <enumeration value="M"/>
+            <enumeration value="F"/>
+        </restriction>
+    </simpleType>
+    
+   
+    <!-- DEBUT VISITE -->
+    <complexType name="Visite">
+
+        <!-- Acte fera l'objet d'un calcul à faire dans le document XSLT PLUTARD 
+        Pour le moment on fera juste avec un string 
+          -->
+        <sequence>
+            <element name="acte" type="ci:Acte"/>
+        </sequence>
+
+        <attribute name="date" type="date"/>
+
+        <!-- Intervenant fera aussi l'objet d'un calcul plutard  -->
+        <attribute name="intervenant" type="string"/>
+    </complexType>
+
+
+    <complexType name="Acte">
+        <attribute name="id" type="string"/>
+    </complexType>
+    <!-- FIN VISITE-->
+    
+    <!-- ..........................................FIN DU TYPE PATIENTS.............................................-->
+    
+</schema>

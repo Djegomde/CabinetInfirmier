@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<patient xmlns="http://www.univ-grenoble-alpes.fr/l3miage/medical"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://www.univ-grenoble-alpes.fr/l3miage/medical ../xsd/patient.xsd">
+    
+    <infosPatient>ici les informations sur le patient</infosPatient>
+    <nom>GLADE</nom>
+    <prenom>Nicolas</prenom>
+    <sexe>M</sexe>
+    <naissance>2024-09-17</naissance>
+    <numéro>1 245676754356788765</numéro>
+    
+</patient>
