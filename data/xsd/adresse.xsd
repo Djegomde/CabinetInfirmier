@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        targetNamespace="http://www.univ-grenoble-alpes.fr/l3miage/medical"
+        xmlns:ci="http://www.univ-grenoble-alpes.fr/l3miage/medical"
+        elementFormDefault="qualified"
+>
+    <!-- TYPE Adresse -->
+    <!-- TYPE Adresse  contient les informations de l'adresse d'un patient ou d'un cabinet 
+    avec le numero etage qui est optionnel pour les patients
+    -->
+    
+    <element name="adresse" type="ci:Adresse"/><!-- DEBUG TEST ADRESS --> 
+    <complexType name="Adresse">
+        <sequence>
+            <!-- NUMERO D'ETAGE  A FAIRE PLUTARD -->
+            
+            <!-- PARTIE RAJOUTER LE 26/09/24 : POUR QUE LE NUMERO D'ETAGE SOIT OPTIONNEL IL SUFFIT DE RAJOUTER 
+            L'INDICATEUR D'EVENEMENT minOccurs = "0" 
+            -->
+            <element name="etage" type="int" minOccurs="0"/>
+            
+            <element name="numero" type="int"  />
+            <element name="rue" type="string"/>
+            
+            <!-- Definition d'un type  de code postal annonyme qui permet de prendre 5 carractere de chiffre   -->
+            <element name="codePostal" type="ci:CodePostal" />
+            
+            <!--  Type Enumeration par la suite   -->
+            <element name="ville" type="string"  />
+            
+        </sequence>
+    </complexType>
+    
+    <!--Type CodePostale -->
+    <simpleType name="CodePostal">
+        <restriction  base="string">
+                    <pattern value="[0-9]{5}"/>
+        </restriction>
+        
+    </simpleType>
+    
+</schema>
+        

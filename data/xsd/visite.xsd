@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        targetNamespace="http://www.univ-grenoble-alpes.fr/l3miage/medical"
+        xmlns:ci="http://www.univ-grenoble-alpes.fr/l3miage/medical"
+        elementFormDefault="qualified"
+>
+    <element name="visite" type="ci:Visite"/>
+    
+    <complexType name="Visite"> 
+        
+        <!-- Acte fera l'objet d'un calcul à faire dans le document XSLT PLUTARD 
+        Pour le moment on fera juste avec un string 
+          -->
+        <sequence>
+            <element name="acte" type="ci:Acte"/>
+        </sequence>
+        
+        <attribute name="date" type="date"/>
+
+        <!-- Intervenant fera aussi l'objet d'un calcul plutard  -->
+        <attribute name="intervenant" type="string"/>
+    </complexType>
+    
+
+    <complexType name="Acte">
+        <attribute name="id" type="string"/>
+    </complexType>
+</schema>

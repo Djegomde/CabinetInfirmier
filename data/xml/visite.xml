@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<visite xmlns="http://www.univ-grenoble-alpes.fr/l3miage/medical"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.univ-grenoble-alpes.fr/l3miage/medical ../xsd/visite.xsd" date="2024-09-17" intervenant="001">
+    <acte id="001"/>
+</visite>
+        

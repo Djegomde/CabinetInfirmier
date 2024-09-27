@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        targetNamespace="http://www.univ-grenoble-alpes.fr/l3miage/medical"
+        xmlns:ci="http://www.univ-grenoble-alpes.fr/l3miage/medical"
+        elementFormDefault="qualified"
+>
+    <!--TYPE PATIENT -->
+    <element name="patient" type="ci:Patient"/>
+    
+    <complexType name="Patient">
+        <sequence>
+            <element name="infosPatient" type="string"/>
+            <element name="nom" type="string"/>
+            <element name="prenom" type="string"/>
+            <element name="sexe" type="ci:Sexe"/>
+            <element name="naissance" type="date"/>
+            
+            <!-- LE NUMERO DE SECU a modelisé plutard-->
+            <element name="numéro" type="ci:NumeroSecu"/>
+           
+        </sequence>
+        
+    </complexType>
+    
+    <!-- TYPE SEXE -->
+  <simpleType name="Sexe">
+      <restriction base="string">
+          <enumeration value="M"/>
+          <enumeration value="F"/>
+      </restriction>
+  </simpleType>
+    
+    <!-- TYPE NUMERO DE SECURITE SOCIALE-->
+    
+    <!-- Commentaire sur le Pattern Utilisé
+    
+*- [12] : Le premier chiffre doit être 1 ou 2 (pour homme ou femme).
+*- \d{2} : Les deux chiffres suivants représentent l'année de naissance.
+*- (0[1-9]|1[0-2]) : Les mois sont représentés par 01 à 12.
+*- (0[1-9]|[1-9]\d) : Le département est représenté par 01 à 99.
+*- \d{6} : Les six chiffres suivants incluent le numéro de commune et le numéro d'ordre.
+*- \d{2} : La clé de contrôle à deux chiffres.-->
+    
+    <simpleType name="NumeroSecu">
+        <restriction base="string">
+            <pattern value="[12]\d{2}(0[1-9]|1[0-2])(0[1-9]|[1-9]\d)\d{6}\d{2}"/>
+        </restriction>
+    </simpleType>
+</schema>
