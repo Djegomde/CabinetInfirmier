@@ -14,7 +14,12 @@
         <sequence>
             <!-- NUMERO D'ETAGE  A FAIRE PLUTARD -->
             
-            <element name="numero" type="int" minOccurs="1" maxOccurs="unbounded" />
+            <!-- PARTIE RAJOUTER LE 26/09/24 : POUR QUE LE NUMERO D'ETAGE SOIT OPTIONNEL IL SUFFIT DE RAJOUTER 
+            L'INDICATEUR D'EVENEMENT minOccurs = "0" 
+            -->
+            <element name="etage" type="int" minOccurs="0"/>
+            
+            <element name="numero" type="int"  />
             <element name="rue" type="string"/>
             
             <!-- Definition d'un type  de code postal annonyme qui permet de prendre 5 carractere de chiffre   -->

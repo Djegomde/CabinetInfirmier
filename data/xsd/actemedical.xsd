@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema  xmlns="http://www.w3.org/2001/XMLSchema"
+         targetNamespace="http://www.univ-grenoble-alpes.fr/l3miage/medical"
+         xmlns:ci="http://www.univ-grenoble-alpes.fr/l3miage/medical"
+         elementFormDefault="qualified">
+
+    <element name="actes" type="ci:Actes"/>
+
+    <complexType name="Actes">
+        <sequence>
+            <element name="acte" type="ci:Acte" maxOccurs="unbounded"/>
+        </sequence>
+    </complexType>
+
+    <complexType name="Acte">
+        <simpleContent>
+            <extension base="string">
+                <attributeGroup ref="ci:ActeAttributes"/>
+            </extension>
+        </simpleContent>
+    </complexType>
+
+    <attributeGroup name="ActeAttributes">
+        <attribute name="id" type="string"/>
+        <attribute name="clé" type="ci:Clé"/>
+        <attribute name="coef" type="ci:Coef"/>
+        <attribute name="type" type="string"/>
+    </attributeGroup>
+
+    <simpleType name="Clé">
+        <restriction base="string">
+            <enumeration value="AMI"/>
+            <enumeration value="DI"/>
+            <enumeration value="AIS"/>
+        </restriction>
+    </simpleType>
+
+    <simpleType name="Coef">
+        <restriction base="decimal">
+            <minInclusive value="1"/>
+            <maxExclusive value="6"/>
+        </restriction>
+    </simpleType>
+</schema>

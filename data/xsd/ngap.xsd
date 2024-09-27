@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema  xmlns="http://www.w3.org/2001/XMLSchema"
+         targetNamespace="http://www.univ-grenoble-alpes.fr/l3miage/medical"
+         xmlns:ci="http://www.univ-grenoble-alpes.fr/l3miage/medical"
+         elementFormDefault="qualified">
+
+    <element name="ngap" type="ci:Ngap"/>
+
+    <complexType name="Ngap">
+        <sequence>
+            <element name="types" type="ci:Types"/>
+            <element name="actes" type="ci:Actes"/>
+        </sequence>
+    </complexType>
+
+    <complexType name="Types">
+        <sequence>
+            <element name="type" type="ci:Type" maxOccurs="unbounded"/>
+        </sequence>
+    </complexType>
+
+    <complexType name="Type">
+        <simpleContent>
+            <extension base="string">
+                <attributeGroup ref="ci:TypeAttributes"/>
+            </extension>
+        </simpleContent>
+    </complexType>
+
+    <attributeGroup name="TypeAttributes">
+        <attribute name="id" type="ID" use="required"/>
+    </attributeGroup>
+
+    <complexType name="Actes">
+        <sequence>
+            <element name="acte" type="ci:Acte" maxOccurs="unbounded"/>
+        </sequence>
+    </complexType>
+
+    <complexType name="Acte">
+        <simpleContent>
+            <extension base="string">
+                <attributeGroup ref="ci:ActeAttributes"/>
+            </extension>
+        </simpleContent>
+    </complexType>
+
+    <attributeGroup name="ActeAttributes">
+        <attribute name="id" type="string" use="required"/>
+        <attribute name="type" type="IDREF" use="required"/>
+        <attribute name="clé" type="ci:CleType" use="required"/>
+        <attribute name="coef" type="decimal" use="required"/>
+    </attributeGroup>
+
+    <simpleType name="CleType">
+        <restriction base="string">
+            <enumeration value="AMI"/>
+            <enumeration value="DI"/>
+            <enumeration value="AIS"/>
+        </restriction>
+    </simpleType>
+
+</schema>

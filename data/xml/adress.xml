@@ -4,6 +4,7 @@
         xmlns="http://www.univ-grenoble-alpes.fr/l3miage/medical"
         xs:schemaLocation="http://www.univ-grenoble-alpes.fr/l3miage/medical ../xsd/adresse.xsd"
 >
+    <etage>2</etage>
     <numero>107</numero>
     <rue>rue des Taillées</rue>
     <codePostal>38400</codePostal>

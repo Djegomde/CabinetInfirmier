@@ -10,8 +10,29 @@
     
     <complexType name="Infirmier">
         <sequence>
-          <element name="nom" type="string"/>
-          <element name="prenom" type="string"/>
+          <element name="nom">
+              <simpleType>
+                  <restriction base="string">
+                      <pattern value="[A-Z][a-z]*"/>
+                      <!--Permet de supprimer les caractères d'espaces au début et à la fin de notre chaine de caractère
+                      Sans cela on doit coller notre chaîne avec les balises de l'element   sinon  le doc xml ne sera pas valide -->
+                      <whiteSpace value="collapse"/>
+                  </restriction>
+              </simpleType>
+          </element>
+            
+          <element name="prenom">
+              <simpleType>
+                  <restriction base="string">
+                      <pattern value="[A-Z][a-z]*"/>
+                      <!--Permet de supprimer les caractères d'espaces au début et à la fin de notre chaine de caractère
+                      Sans cela on doit coller notre chaîne avec les balises de l'element   sinon  le doc xml ne sera pas valide -->
+                      <whiteSpace value="collapse"/>
+                  </restriction>
+              </simpleType>
+          </element>
+            
+            
           <element name="photo" type="string"/>  
         </sequence>
         <attribute name="id" type="ci:Id"/>
